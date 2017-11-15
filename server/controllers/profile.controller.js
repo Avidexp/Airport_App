@@ -18,7 +18,7 @@ exports.editUser = function (req, res, next) {
     console.log(newEmail);
     console.log(fullName);
     console.log(phoneNumber);
-    console.log(oldEmail);
+    console.log(newEmail);
     
     // if (!email || !password) {
     //   return res.status(422).send({ error: 'You must provide email and password'});

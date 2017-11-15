@@ -8,6 +8,24 @@ import {
 import * as types from './types';
 const ROOT_URL = 'http://localhost:8080/api/v1';
 
+
+export function contactSubmit (email, fullName, phoneNumber, subject, message) {
+  return function (dispatch) {
+    // Submit email/password to the server
+    axios.post(`${ROOT_URL}/sendMessage`, { email, fullName, phoneNumber, subject, message})
+      .then(response => {
+        // If request is good...
+       
+        console.log("MESSAGE SENT SUCCESSFULLY!");
+        
+      })
+      .catch(() => {
+        // If request is bad...
+        // - Show an error to the user
+        dispatch(authError('Bad Login Info'))
+      })
+  };
+}
 export function signinUser (email, password ) {
   return function (dispatch) {
     // Submit email/password to the server
