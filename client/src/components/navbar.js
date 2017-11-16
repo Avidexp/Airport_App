@@ -61,12 +61,12 @@ class Navbar extends React.Component {
     <div className="navbar-collapse collapse">
     
         <ul className="nav navbar-nav navbar-right">
-            
-            <li><a href="#ourservices">our services</a></li>
-            <li><a href="#events">events</a></li>
-            <li><a href="#team">team</a></li>
-            <li><a href="#partners">partners</a></li>
-            <li><a href="#contact">contact</a></li>
+            {/* I CHANGED THIS */}
+            <li><a href="/#ourservices">our services</a></li>
+            <li><a href="/#events">events</a></li>
+            <li><a href="/#team">team</a></li>
+            <li><a href="/#partners">partners</a></li>
+            <li><a href="/#contact">contact</a></li>
              
             {this.renderLinks()}
        </ul>

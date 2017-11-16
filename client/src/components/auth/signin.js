@@ -4,7 +4,7 @@ import * as actions from '../../actions';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Footer from "../footer";
-
+import axios from 'axios';
 class Signin extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +38,15 @@ class Signin extends Component {
     console.log("New USER SIGNED IN");
     console.log( email );
     
+    axios.get('/fetchUser')
+    .then(function(response){
+      console.log(response)
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+
+
     this.context.router.history.push('/profile');
     //this.context.router.dispatch(window.location.reload(), null);
     
@@ -72,7 +81,7 @@ class Signin extends Component {
             <input  ref="password" type='password' className='form-control' placeholder='Enter password'  />
           </fieldset>
           {this.renderAlert()}
-          <button type='submit' className='btn btn-primary' onClick={this.handleFormSubmit.bind(this)}>Sign in</button>
+          <button type="button" className='btn btn-primary' onClick={this.handleFormSubmit.bind(this)}>Sign in</button>
           <br></br>
           <br></br>
           <br></br>

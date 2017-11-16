@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from './navbar';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+
+
 class profile extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +14,9 @@ class profile extends React.Component {
       authenticated: false
     }
   }
-
+  static contextTypes = {
+    router: PropTypes.object
+  };
   componentWillMount(){
     let auth = localStorage.getItem('authenticated');
 if (auth == true){
@@ -20,6 +26,12 @@ console.log(this.props);
   }
 componentDidMount(){
   console.log(this.props);
+
+
+  console.log("COMPONENT DID MOUNT");
+
+
+  
 }
 
   

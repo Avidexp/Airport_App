@@ -31,6 +31,8 @@ export function signinUser (email, password ) {
     // Submit email/password to the server
     axios.post(`${ROOT_URL}/signin`, { email, password })
       .then(response => {
+        console.log(response);
+        
         // If request is good...
         // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER })

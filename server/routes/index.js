@@ -17,6 +17,6 @@ module.exports = function (app) {
   app.post('/api/v1/sendMessage', contactController.sendMessage);
   
   
-  app.post('/signup', Authentication.signOut);
+  app.post('/signout', Authentication.signOut);
 
 };

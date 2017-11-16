@@ -17,10 +17,18 @@ import team5 from '../images/team/team-5.jpg';
 import Footer from './footer';
 
 class Homepage extends Component {
+    constructor(props){
+        super(props);
+    }
+    state ={
+        contactSubmision: false,
+        sent: false
+    }
   static contextTypes = {
     router: PropTypes.object
   };
 
+  
   componentDidMount() {
     this.props.fetchMessage();
   }
@@ -32,15 +40,8 @@ class Homepage extends Component {
     let message = this.refs.message.value;
     let subject = this.refs.subject.value;
    this.props.contactSubmit(email, fullName, phoneNumber, subject, message);
-
+this.setState({sent: true, contactSubmision: true});
     console.log('CONTACT FORM SUBMITED');
-    console.log(email);
-    console.log(fullName);
-    console.log(phoneNumber);
-    console.log(message);
-    console.log(subject);
-    
-    
 
   }
 
@@ -232,6 +233,11 @@ class Homepage extends Component {
             <button onClick={this.contactSubmit.bind(this)} className="btn btn-md" >Submit your Message</button>
         </div>
 </form>
+<br></br>
+<br></br>
+<br></br>
+{/* I CHANGED THIS */}
+{this.state.contactSubmision == true ? <p style={{'color': 'green', 'font-size': '18px'}}> Message Submitted Successfully </p>: <p></p>}
     </div>
 </div>
 
