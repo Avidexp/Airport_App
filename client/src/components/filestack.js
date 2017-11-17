@@ -1,7 +1,7 @@
 import ReactFilestack, { client } from "filestack-react";
 import React from "react";
 import filestack from "filestack-js";
-const apikey= "AFADgP4mQICNxkczq4zSpz";
+const apikey= "	AuHotnNtiQSxELzE2smksz";
 const filestackDb = filestack.init(apikey);
 
 export default class Test extends React.Component {

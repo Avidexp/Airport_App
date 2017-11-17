@@ -23,7 +23,7 @@ export default class Test extends React.Component {
     return (
       <div>
         <ReactFilestack
-          apikey={"AVVEHpNSEGUPUuMss6c3gz"}
+          apikey={"AuHotnNtiQSxELzE2smksz"}
           buttonText="Upload Photo!"
           buttonClass="classname"
           options={options}

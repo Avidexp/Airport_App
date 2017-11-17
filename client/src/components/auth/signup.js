@@ -42,6 +42,10 @@ class Signup extends Component {
     let password= this.refs.password.value;
     let phoneNumber = this.refs.phoneNumber.value;
     let adminCode = this.refs.adminCode.value;
+    if (this.refs.adminCode == undefined || this.refs.adminCode == null){
+      let adminCode = "";
+      
+    }
     console.log(firstName);
     console.log(lastName);
     console.log(email);
@@ -50,11 +54,15 @@ class Signup extends Component {
     this.props.signupUser(firstName, lastName, email, password, phoneNumber, adminCode);
 
     console.log(this.props.values);
-    localStorage.setItem("userEmail", this.props.values.email);
-    window.location.reload(true);
-    
-    this.context.router.history.push("/signin");
-    this.context.router.refresh;
+    let authenticated = localStorage.getItem('authenticated');
+    if (authenticated){
+      localStorage.setItem("userEmail", this.props.values.email);
+      window.location.reload(true);
+      
+      this.context.router.history.push("/signin");
+      this.context.router.refresh;
+    }
+
     
   }
   renderAlert() {
@@ -141,7 +149,7 @@ class Signup extends Component {
         {this.state.alertVisible == true ? 
                 <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>
                 <h4>Enter Your Admin Code.</h4>
-                <p>
+                
                 <fieldset className="form-group">
             <label>Admin Code</label>
             <input
@@ -152,7 +160,7 @@ class Signup extends Component {
           </fieldset>
                   <span> or </span>
                   <Button onClick={() => this.handleAlertDismiss()}>Cancel</Button>
-                </p>
+                
               </Alert> : <p></p>
             }
       <br></br>

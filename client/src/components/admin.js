@@ -69,7 +69,7 @@ handleAlertDismiss() {
         <br></br>
         <br></br>
         <br></br>
-        Welcome, Admin!
+        <p style={{'font-size': '25px'}}>Welcome, Admin!</p>
         <br></br>
         <br></br>
 
