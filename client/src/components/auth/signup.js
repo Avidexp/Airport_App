@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import ReactFilestack from 'filestack-react';
 import Test from '../filestack.js';
 import Footer from "../footer";
+import {Thumbnail, Button, Alert} from 'react-bootstrap';
 
 
 class Signup extends Component {
@@ -17,18 +18,19 @@ class Signup extends Component {
       phoneNumber: "",
       email: "",
       password: "",
-      passwordConfirm: ""
+      passwordConfirm: "",
+      alertVisible: false
     };
   }
   static contextTypes = {
     router: PropTypes.object
   };
-  componentWillUpdate(nextProps) {
-    if (this.props.authenticated) {
-      localStorage.setItem("userEmail", this.props.values.email);
-      this.context.router.history.push("/");
-    }
-  }
+  // componentWillUpdate(nextProps) {
+  //   if (this.props.authenticated) {
+  //     localStorage.setItem("userEmail", this.props.values.email);
+  //     this.context.router.history.push("/");
+  //   }
+  // }
   handleFormSubmit(event) {
     event.preventDefault();
     // Call action creator to sign up the user
@@ -63,6 +65,13 @@ class Signup extends Component {
         </div>
       );
     }
+  }
+  handleAlertDismiss() {
+    this.setState({ alertVisible: false });
+  }
+
+  handleAlertShow() {
+    this.setState({ alertVisible: true });
   }
  
   render() {
@@ -119,7 +128,21 @@ class Signup extends Component {
           {passwordConfirm.touched && passwordConfirm.error && <div className='error'>{passwordConfirm.error}</div>}          
         </fieldset>
 
-        <fieldset className="form-group">
+        {/* <fieldset className="form-group">
+            <label>Admin Code</label>
+            <input
+              className="form-control"
+              ref="adminCode"
+              placeholder="Enter Admin Code"
+            />
+          </fieldset> */}
+        {this.renderAlert()}
+        <Button onClick={() => this.handleAlertShow()}>I'm an Admin!</Button>  
+        {this.state.alertVisible == true ? 
+                <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>
+                <h4>Enter Your Admin Code.</h4>
+                <p>
+                <fieldset className="form-group">
             <label>Admin Code</label>
             <input
               className="form-control"
@@ -127,9 +150,12 @@ class Signup extends Component {
               placeholder="Enter Admin Code"
             />
           </fieldset>
-        {this.renderAlert()}
-        
-      
+                  <span> or </span>
+                  <Button onClick={() => this.handleAlertDismiss()}>Cancel</Button>
+                </p>
+              </Alert> : <p></p>
+            }
+      <br></br>
       {/* <button action='submit' className='btn btn-primary'>Upload Photo!</button> */}
       <button onClick={this.handleFormSubmit.bind(this)} action='submit' className='btn btn-primary'>Sign up!</button>
      <br></br>
