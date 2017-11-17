@@ -49,7 +49,11 @@ class Signup extends Component {
 
     console.log(this.props.values);
     localStorage.setItem("userEmail", this.props.values.email);
-    this.context.router.history.push("/profile");
+    window.location.reload(true);
+    
+    this.context.router.history.push("/signin");
+    this.context.router.refresh;
+    
   }
   renderAlert() {
     if (this.props.errorMessage) {

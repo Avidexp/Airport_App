@@ -41,9 +41,10 @@ class Admin extends React.Component {
 
 handleButtonClick(id){
     this.props.removeUser(id);
-    console.log("Handle Button Click Completed")
+    window.location.reload(true);
+    
 }
-render() {
+    render() {
     const users = this.state.users;
     console.log(users);
 

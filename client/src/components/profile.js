@@ -34,15 +34,17 @@ class profile extends React.Component {
     });
     console.log("STATE IS: ");
     console.log(this.state);   
-
+    
   }
 componentDidMount(){
   console.log(this.props);
 
-
+    //Refresh page to re-render navbar
+    this.context.router.refresh;
+    this.context.router.history.push('/profile');
   console.log("COMPONENT DID MOUNT");
- 
-
+  // this.context.router.history.push('/profile');
+  
 
   
 }
@@ -72,7 +74,6 @@ componentDidMount(){
         this.context.router.history.push('/admin');
       }
         console.log(userProfile);
-      
         // <div>  <br></br><br></br><br></br><br></br><br></br><p>Welcome, </p><h4> {userProfile[0].firstName}, {userProfile[0].lastName}. </h4></div>)
     }
     return (
