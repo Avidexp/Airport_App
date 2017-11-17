@@ -6,7 +6,6 @@ import * as actions from '../actions';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 const ROOT_URL = 'http://localhost:8080/api/v1';
-
 let userProfile = [];
 
 class profile extends React.Component {
@@ -67,11 +66,14 @@ componentDidMount(){
 
   }
   render() {
-    const userProfile = this.state.user;
-    if (userProfile[0]){
-      return ( 
-        
-        <div>  <br></br><br></br><br></br><br></br><br></br><p>Welcome, </p><h4> {userProfile[0].firstName} </h4></div>)
+    const userProfile = this.state.user[0];
+    if (userProfile){
+      if(userProfile.isAdmin === true){
+        this.context.router.history.push('/admin');
+      }
+        console.log(userProfile);
+      
+        // <div>  <br></br><br></br><br></br><br></br><br></br><p>Welcome, </p><h4> {userProfile[0].firstName}, {userProfile[0].lastName}. </h4></div>)
     }
     return (
       <div>

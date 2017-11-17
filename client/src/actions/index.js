@@ -82,6 +82,13 @@ export function signupUser (firstName, lastName, email, password, phoneNumber, a
   };
 }
 
+export function removeUser(id){
+  return function(dispatch){
+    axios.post(`${ROOT_URL}/removeUser`, {id})
+    .then().catch(err => console.log(err))
+  }
+}
+
 
 export function authError (error) {
   return {
