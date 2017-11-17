@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as actions from '../../actions';
 import PropTypes from 'prop-types';
 import ReactFilestack from 'filestack-react';
-import Test from '../filestack.js';
+import Test from '../filestack';
 import Footer from "../footer";
 import {Thumbnail, Button, Alert} from 'react-bootstrap';
 
@@ -41,11 +41,23 @@ class Signup extends Component {
 
     let password= this.refs.password.value;
     let phoneNumber = this.refs.phoneNumber.value;
-    let adminCode = this.refs.adminCode.value;
-    if (this.refs.adminCode == undefined || this.refs.adminCode == null){
-      let adminCode = "";
+    let adminCode = this.refs.adminCode;
+
+    if (adminCode == undefined || adminCode == "" || adminCode == null){
+      let adminCode = ""; 
+      
+    } else if (this.refs.adminCode){
+      adminCode = this.refs.adminCode.value;
       
     }
+    // if (this.refs.adminCode){
+    //   let adminCode = this.refs.adminCode.value;
+      
+    // } else {
+      
+    // }
+    
+    // == undefined || this.refs.adminCode.value === null || !this.refs.adminCode || this.refs.adminCode.value == ""
     console.log(firstName);
     console.log(lastName);
     console.log(email);

@@ -87,7 +87,7 @@ handleAlertDismiss() {
                 </p>
                 {this.state.alertVisible == true && this.state.alertId == user._id ? 
                 <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>
-                <h4>Are you sure you want to delete {user.firstName}?</h4>
+                <h4>Are you sure you want to delete {user.firstName}, {user.lastName}?</h4>
                 <p>
                   <Button onClick={() => this.handleButtonClick(user._id)} bsStyle="danger">Delete User</Button>
                   <span> or </span>
