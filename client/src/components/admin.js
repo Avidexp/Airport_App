@@ -81,6 +81,7 @@ handleAlertDismiss() {
                 <h3>{user.firstName}, {user.lastName}</h3>
                 <p>{user.email}</p>
                 <p>{user.phoneNumber}</p>
+                {user.isAdmin == true ? <p style={{'color': 'red', 'font-size': '15px'}}>Account is an Admin </p> : <p></p>}
                 <p>
                 <Button bsStyle="warning" onClick={() => this.handleAlertShow(user._id)}>Delete</Button>
                 </p>
