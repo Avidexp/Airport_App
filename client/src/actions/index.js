@@ -35,18 +35,18 @@ export function signinUser (email, password ) {
         console.log("LOOK HERE INDEX. JS ");
         console.log("LOOK HERE INDEX. JS ");
         console.log(response);
-        
+        localStorage.setItem('authenticated', true);
+        localStorage.setItem('userEmail', email);
         // If request is good...
         // - Update state to indicate user is authenticated
         dispatch({ type: AUTH_USER })
         // - Save the JWT token
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('authenticated', true);
       })
       .catch(() => {
         // If request is bad...
         // - Show an error to the user
-        dispatch(authError('Bad Login Info'))
+        
       })
   };
 }
