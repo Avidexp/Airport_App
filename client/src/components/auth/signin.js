@@ -33,7 +33,7 @@ class Signin extends Component {
       let email = this.refs.email.value;
       let password = this.refs.password.value;
     // action creator dispatching creditionals to validate on server
-    this.props.signinUser(email, password );
+    this.props.signinUser(email, password);
     localStorage.setItem('userEmail', email);
     console.log("New USER SIGNED IN");
     console.log( email );

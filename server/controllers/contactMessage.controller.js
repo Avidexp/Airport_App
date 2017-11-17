@@ -30,7 +30,7 @@ exports.sendMessage = function (req, res, next) {
     });
     var mailOptions = {
         from: email,
-        //Enter as many emails as you'd like
+        //Enter as many emails as you'd 
         to: 'dj0759@gmail.com, djackson0759@gmail.com',
         subject: `${subject}`,
         text: message,

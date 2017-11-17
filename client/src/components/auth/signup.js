@@ -39,13 +39,13 @@ class Signup extends Component {
 
     let password= this.refs.password.value;
     let phoneNumber = this.refs.phoneNumber.value;
-    
+    let adminCode = this.refs.adminCode.value;
     console.log(firstName);
     console.log(lastName);
     console.log(email);
     console.log(password);
     console.log(phoneNumber);
-    this.props.signupUser(firstName, lastName, email, password, phoneNumber);
+    this.props.signupUser(firstName, lastName, email, password, phoneNumber, adminCode);
 
     console.log(this.props.values);
     localStorage.setItem("userEmail", this.props.values.email);
@@ -114,6 +114,15 @@ class Signup extends Component {
           <input className='form-control' {...passwordConfirm} type='password' placeholder='Enter password again' />
           {passwordConfirm.touched && passwordConfirm.error && <div className='error'>{passwordConfirm.error}</div>}          
         </fieldset>
+
+        <fieldset className="form-group">
+            <label>Admin Code</label>
+            <input
+              className="form-control"
+              ref="adminCode"
+              placeholder="Enter Admin Code"
+            />
+          </fieldset>
         {this.renderAlert()}
         
       

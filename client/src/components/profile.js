@@ -5,39 +5,36 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+const ROOT_URL = 'http://localhost:8080/api/v1';
 
+let userProfile = [];
 
 class profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false
+      authenticated: false,
+      user: []
     }
   }
   static contextTypes = {
     router: PropTypes.object
   };
   componentWillMount(){
-   
-    
     let userEmail = localStorage.getItem('userEmail');
     let auth = localStorage.getItem('authenticated'); 
-
-
-if (auth == true){
-this.setState({authenticated: true});
-console.log(this.props);
-
-axios.post(`/fetchUser`, { userEmail })
-.then(response => {
-
-    console.log(response);
-})
-.catch(err => {
-console.log(err)
-})
-}
-
+  
+    axios.post(`${ROOT_URL}/fetchUser`, { userEmail })
+    .then(response => {
+        this.setState({authenticated: true, user: response.data.payload});
+        console.log("CHANGED STATE");
+        console.log(this.state);
+    })
+    .catch(err => {
+    console.log(err)
+    });
+    console.log("STATE IS: ");
+    console.log(this.state);   
 
   }
 componentDidMount(){
@@ -45,6 +42,7 @@ componentDidMount(){
 
 
   console.log("COMPONENT DID MOUNT");
+ 
 
 
   
@@ -69,7 +67,12 @@ componentDidMount(){
 
   }
   render() {
-    
+    const userProfile = this.state.user;
+    if (userProfile[0]){
+      return ( 
+        
+        <div>  <br></br><br></br><br></br><br></br><br></br><p>Welcome, </p><h4> {userProfile[0].firstName} </h4></div>)
+    }
     return (
       <div>
         <div>
@@ -83,6 +86,9 @@ componentDidMount(){
         <br></br>
         <br></br>
         <br></br>
+        
+        <div>
+        </div>
       <form>
         <fieldset className="form-group">
             <label>Full Name</label>
